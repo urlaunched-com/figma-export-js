@@ -1,0 +1,45 @@
+{
+  "name": "figma-export-js",
+  "version": "1.0.6",
+  "description": "Figma Export is a library that allows you to export resources from Figma into your project. It automatically generates a .figma-export.json file that contains settings for exporting resources.",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "prepack": "tsc",
+    "start": "tsc && node ./dist/index.js"
+  },
+  "bin": {
+    "figma-export": "./dist/index.js"
+  },
+  "files": [
+    "dist/index.js",
+    "dist",
+    "README.md",
+    ".figma-export.json"
+  ],
+  "keywords": [
+    "figma",
+    "export",
+    "resources",
+    "scss",
+    "icons",
+    "images"
+  ],
+  "author": "Romanenko Serhii",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "progress": "^2.0.3",
+    "sharp": "^0.33.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/progress": "^2.0.7",
+    "typescript": "^5.4.5"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }]
+}
