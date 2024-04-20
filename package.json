@@ -1,12 +1,16 @@
 {
   "name": "figma-export-js",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "Figma Export is a library that allows you to export resources from Figma into your project. It automatically generates a .figma-export.json file that contains settings for exporting resources.",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "tsc",
     "prepack": "tsc",
     "start": "tsc && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/urlaunched-com/figma-export-js.git"
   },
   "bin": {
     "figma-export": "./dist/index.js"
@@ -15,6 +19,7 @@
     "dist/index.js",
     "dist",
     "README.md",
+    "LICENSE",
     ".figma-export.json"
   ],
   "keywords": [
@@ -37,9 +42,11 @@
     "@types/progress": "^2.0.7",
     "typescript": "^5.4.5"
   },
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
       "url": "https://opensource.org/licenses/MIT"
-    }]
+    }
+  ]
 }
