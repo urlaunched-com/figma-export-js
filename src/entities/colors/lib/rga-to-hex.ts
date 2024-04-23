@@ -1,9 +1,3 @@
-/**
- *  rgbaToHex - convert rgba color to hex
- *  @param {IColor} color
- *  @returns {IColor}
- * **/
-
 import { IColor } from "../../nodes/types";
 
 export const rgbaToHex = (color: IColor): string => {

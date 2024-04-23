@@ -5,7 +5,8 @@ import stream from 'stream';
 import { getConfigValue } from "./get-config";
 
 export const saveToFile = async (content: string, filePath: string, comment: string = '', isColor: boolean = false): Promise<void> => {
-  let directoryPath  = await getConfigValue(filePath);
+  const config = await getConfigValue();
+  let directoryPath  = config.path[filePath];
   const fileName = `_${isColor ? 'colors' : 'fonts'}.scss`;
   const fullPath = path.join(directoryPath, fileName);
 
