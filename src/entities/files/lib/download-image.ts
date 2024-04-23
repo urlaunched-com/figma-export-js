@@ -8,7 +8,8 @@ import ProgressBar from 'progress';
 import { getConfigValue } from "../../../shared";
 
 export const downloadImage = async (imagesArray: INodesArray[], fileType: string, directory: string) => {
-  const directoryPath = await getConfigValue(directory);
+  const config = await getConfigValue();
+  const directoryPath = config.path[directory];
   const bar = new ProgressBar(`Downloading ${fileType === FILE_TYPE.SVG ? "icons" : "images"} [:bar] :percent :etas`, {
     complete: '=',
     incomplete: ' ',

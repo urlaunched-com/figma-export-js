@@ -5,11 +5,22 @@ export interface IColor {
   a: number
 }
 
+interface IGradientStop {
+  color: IColor
+  position: number
+}
+
+interface IGradientHandlePosition {
+  x: number
+  y: number
+}
+
 interface IFill {
   blendMode: string
   type: string
   color: IColor
-  gradientStops: any
+  gradientStops: IGradientStop[]
+  gradientHandlePositions: IGradientHandlePosition[]
 }
 
 interface IDocument {

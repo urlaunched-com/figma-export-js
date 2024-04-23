@@ -1,15 +1,24 @@
 #!/usr/bin/env node
 
-import { createVariablesFile, getColorsObject, getFontsObject, getIcons, getImages } from "./src/entities";
+import {
+  createVariablesFile, fetchComponentsApi,
+  fetchStylesApi,
+  getColorsObject,
+  getFontsObject,
+  getIcons,
+  getImages
+} from "./src/entities";
 import { generateConfig } from "./src/commands";
 
 
 const getAssets = async () => {
-  await getColorsObject()
-  await getFontsObject()
+  const styles = await fetchStylesApi();
+  const components = await fetchComponentsApi();
+  await getColorsObject(styles)
+  await getFontsObject(styles)
   await createVariablesFile();
-  await getIcons()
-  await getImages()
+  await getIcons(components)
+  await getImages(components)
 }
 
 const args = process.argv.slice(2);

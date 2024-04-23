@@ -3,7 +3,8 @@ import path from "path";
 import { getConfigValue } from "../../../shared";
 
 export const createVariablesFile = async (): Promise<void> => {
-  const directoryPath = await getConfigValue("scss")
+  const config = await getConfigValue();
+  const directoryPath = config.path.styles;
 
   // Define the content of the _variables.scss file
   const content = `
