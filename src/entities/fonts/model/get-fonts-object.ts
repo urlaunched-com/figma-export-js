@@ -14,7 +14,7 @@ export const getFontsObject = async (styles: IStyle[]) => {
       }
       return {
         key: processKey(node.document.name),
-        value: `${node.document.style.fontSize}px/${node.document.style.lineHeightPx}px ${node.document.style.fontFamily} ${node.document.style.fontWeight}`
+        value: `${node.document.style.fontSize}px/${node.document.style.lineHeightPx}px var(--${node.document.style.fontFamily}) ${node.document.style.fontWeight}, sans-serif`
       };
     }).filter(Boolean);
     saveFonts(nodesArray as INodesArray[]);
