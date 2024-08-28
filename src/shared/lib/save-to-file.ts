@@ -6,14 +6,14 @@ import { getConfigValue } from "./get-config";
 
 export const saveToFile = async (content: string, filePath: string, comment: string = '', isColor: boolean = false): Promise<void> => {
   const config = await getConfigValue();
-  let directoryPath  = config.path[filePath];
+  let directoryPath = config.path[filePath];
   const fileName = `_${isColor ? 'colors' : 'fonts'}.scss`;
   const fullPath = path.join(directoryPath, fileName);
 
   // Check if directory exists
   if (!fs.existsSync(directoryPath)) {
     // If directory does not exist, create it
-    fs.mkdirSync(directoryPath, { recursive: true });
+    fs.mkdirSync(directoryPath, {recursive: true});
   }
 
   // Prepend the comment to the content
