@@ -1,7 +1,7 @@
 # Figma Export
 
 Figma Export is a library that allows you to export resources from Figma into your project. It automatically generates
-a `.figma-export.json` file that contains settings for exporting resources.
+a `figma-export.yaml` file that contains settings for exporting resources.
 
 ## Installation
 
@@ -17,10 +17,6 @@ or if you are using yarn:
 yarn global add figma-export-js
 ```
 
-## Usage
-
-After installation, you can use the `figma-export` command in the command line.
-
 ### Initialization
 
 To start working with the library, you need to initialize a configuration file. To do this, run the command:
@@ -29,30 +25,39 @@ To start working with the library, you need to initialize a configuration file. 
 figma-export init
 ```
 
-This command will create a `.figma-export.json` file with basic settings.
+This command will create a `figma-export.yaml` file with basic settings.
 
 ### Configuration
 
-In the `.figma-export.json` file, you can specify the following settings:
-- `scss`: Path for exporting SCSS files
-- `icons`: Path for exporting icons
-- `images`: Path for exporting images
+In the `figma-export.yaml` file, you can specify the following settings:
+
+```yaml
+figma:
+  fieldId: your-figma-file-id
+common:
+  icons: "^(ic)/([a-z0-9_]+)$"
+  images: "^(img)/([a-z0-9_]+)$"
+path:
+  styles: "./src/core/styles/_global"
+  icons: "./public/assets/icons"
+  images: "./public/assets/images"
+  ```
+
+Please replace your-figma-file-id with your actual Figma file ID.
 
 ## Environment Variables
 
-In addition to the settings in the `.figma-export.json` file, you also need to set up environment variables in a `.env` file in the root of your project. The required environment variables are:
+In addition to the settings in the figma-export.yaml file, you also need to set up an environment variable before
+running your application. The required environment variable is:
 
-- `FIGMA_API_KEY`: Your Figma API key
-- `FIGMA_FILE_ID`: The ID of your file in Figma
+- `FIGMA_PERSONAL_TOKEN`: Your Figma personal token
 
-Here is an example of what your `.env` file might look like:
-
-```env
-FIGMA_API_KEY=your-figma-api-key
-FIGMA_FILE_ID=your-figma-file-id
+```bash
+export FIGMA_PERSONAL_TOKEN=your-figma-personal-token
 ```
-Please replace` your-figma-api-key` and `your-figma-file-id` with your actual Figma API key and file ID.  
-Remember to add the `.env` file to your `.gitignore` file to prevent it from being committed to your repository.
+
+Please replace your-figma-personal-token with your actual Figma personal token.
+
 ### Exporting Resources
 
 After setting up the configuration file, you can start exporting resources. To do this, simply run the `figma-export`
@@ -62,7 +67,7 @@ command without arguments:
 figma-export
 ```
 
-This command will export all resources specified in the `.figma-export.json` file to the corresponding directories.
+This command will export all resources specified in the figma-export.yaml file to the corresponding directories.
 
 ## License
 

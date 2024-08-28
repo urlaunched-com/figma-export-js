@@ -4,5 +4,5 @@ import { INodesArray } from "../../../types";
 
 export const saveColors = (nodesArray: INodesArray[]) => {
   const sassVariables = generateSassVariables(nodesArray);
-  saveToFile(sassVariables, 'scss', comment, true);
+  saveToFile(sassVariables, 'styles', comment, true);
 }

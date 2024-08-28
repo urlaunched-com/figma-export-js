@@ -1,10 +1,8 @@
 import { INodesArray } from "../../types";
 
 export const generateSassVariables = (nodesArray: INodesArray[]): string => {
-  // Сортируем массив по ключу
   nodesArray.sort((a, b) => a.key.localeCompare(b.key));
 
-  // Группируем элементы по категориям
   const categories: { [key: string]: INodesArray[] } = {};
   const noCategory: INodesArray[] = [];
   for (const node of nodesArray) {

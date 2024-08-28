@@ -1,12 +1,11 @@
-import { fetchStylesApi } from "../../styles";
+import { IStyle } from "../../styles";
 import { INodesArray, STYLE_TYPE } from "../../../types";
 import { fetchNodesApi } from "../../nodes";
 import { saveFonts } from "../lib";
 import { processKey, useStyle } from "../../../shared";
 
-export const getFontsObject = async () => {
+export const getFontsObject = async (styles: IStyle[]) => {
   try {
-    const styles = await fetchStylesApi();
     const fonts = styles.filter((style) => style.style_type === STYLE_TYPE.TEXT && useStyle(style));
     const nodes = await fetchNodesApi(fonts)
     const nodesArray = Object.entries(nodes).map(([key, node]) => {
@@ -15,7 +14,7 @@ export const getFontsObject = async () => {
       }
       return {
         key: processKey(node.document.name),
-        value: `${node.document.style.fontSize}px/${node.document.style.lineHeightPx}px ${node.document.style.fontFamily} ${node.document.style.fontWeight}`
+        value: `${node.document.style.fontSize}px/${node.document.style.lineHeightPx}px var(--${node.document.style.fontFamily}) ${node.document.style.fontWeight}, sans-serif`
       };
     }).filter(Boolean);
     saveFonts(nodesArray as INodesArray[]);
