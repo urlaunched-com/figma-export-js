@@ -1,6 +1,6 @@
 {
   "name": "figma-export-js",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Figma Export is a library that allows you to export resources from Figma into your project. It automatically generates a .figma-export.json file that contains settings for exporting resources.",
   "main": "dist/index.js",
   "scripts": {
