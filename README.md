@@ -37,6 +37,7 @@ figma:
 common:
   icons: "^(ic)/([a-z0-9_]+)$"
   images: "^(img)/([a-z0-9_]+)$"
+  variablesType: "scss" # scss or css. If css is selected, the file will be generated with css var variables
 path:
   styles: "./src/core/styles/_global"
   icons: "./public/assets/icons"
