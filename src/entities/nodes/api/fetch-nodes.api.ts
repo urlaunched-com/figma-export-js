@@ -1,6 +1,6 @@
 import { API, ENDPOINTS } from "../../../shared";
 import { INodeResponse, INodes } from "../types";
-import { IStyle } from "../../styles/types";
+import { IStyle } from "../../styles";
 import { IComponent } from "../../components";
 
 export const fetchNodesApi = async (data: IStyle[]|IComponent[]): Promise<INodes> => {

@@ -1,4 +1,4 @@
-import { IStyle } from "../../entities/styles/types";
+import { IStyle } from "../../entities";
 import { IComponent } from "../../entities";
 
 export const useStyle = (style: IStyle | IComponent) => {

@@ -1,24 +1,20 @@
 #!/usr/bin/env node
 
-import {
-  createVariablesFile, fetchComponentsApi,
-  fetchStylesApi,
-  getColorsObject,
-  getFontsObject,
-  getIcons,
-  getImages
-} from "./src/entities";
+import { createVariablesFile, fetchComponentsApi, fetchStylesApi } from "./src/entities";
 import { generateConfig } from "./src/commands";
+import { getAssets, getStyleObject } from "./src/shared";
+import { FILE_TYPE } from "./src/types";
 
 
-const getAssets = async () => {
+const getFigmaAssets = async () => {
   const styles = await fetchStylesApi();
   const components = await fetchComponentsApi();
-  await getColorsObject(styles)
-  await getFontsObject(styles)
+  await getStyleObject(styles, "colors");
+  await getStyleObject(styles, "fonts");
   await createVariablesFile();
-  await getIcons(components)
-  await getImages(components)
+  await getAssets(components, FILE_TYPE.SVG, 'icons');
+  await getAssets(components, FILE_TYPE.PNG, 'images');
+
 }
 
 const args = process.argv.slice(2);
@@ -27,6 +23,6 @@ switch (args[0]) {
     generateConfig();
     break;
   default:
-    getAssets();
+    getFigmaAssets();
     break;
 }
